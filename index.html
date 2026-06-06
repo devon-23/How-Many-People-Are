@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas class="star-field" id="stars"></canvas>
+
+<div class="hero">
+    <p class="hero-label">
+        ↯ LIVE HUMAN ACTIVITY INDEX
+    </p>
+    <h1 class="hero-title">
+        How many people are...
+    </h1>
+    <p class="hero-subtitle">
+        Search real-time estimates, live APIs,
+        and global activity models.
+    </p>
+    <div class="search-wrap">
+        <div class="search-box">
+            <span class="search-prefix">
+                how many people are
+            </span>
+            <input
+                type="text"
+                id="search-input"
+                placeholder="asleep right now..."
+                autocomplete="off"
+            >
+        </div>
+        <div class="suggestions"
+             id="suggestions">
+        </div>
+    </div>
+</div>
+
+<section
+    class="result-panel"
+    id="results">
+    <div class="result-empty">
+        <h2>Search something</h2>
+        <p>
+            Try:
+        </p>
+        <ul>
+            <li>in space right now</li>
+            <li>asleep right now</li>
+            <li>on a plane</li>
+            <li>watching a sunset</li>
+            <li>online right now</li>
+        </ul>
+    </div>
+</section>
+
+<p class="footer-note">
+    * live apis · estimated calculations · statistical models · real-time data
+</p>
+
+<script src="script.js"></script>
+</html>
