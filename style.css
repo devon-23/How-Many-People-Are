@@ -515,3 +515,59 @@
 
     margin-bottom:.5rem;
 }
+
+@keyframes shake {
+
+  0% {
+    transform:translateX(0);
+  }
+
+  20% {
+    transform:translateX(-8px);
+  }
+
+  40% {
+    transform:translateX(8px);
+  }
+
+  60% {
+    transform:translateX(-8px);
+  }
+
+  80% {
+    transform:translateX(8px);
+  }
+
+  100% {
+    transform:translateX(0);
+  }
+
+}
+
+.shake {
+
+  animation:
+    shake .35s ease;
+
+}
+
+.search-error {
+
+  border-color:#ff5d5d !important;
+
+  box-shadow:
+    0 0 20px rgba(255,93,93,.25);
+
+}
+
+.alias-match{
+
+  display:block;
+
+  margin-top:2px;
+
+  font-size:.7rem;
+
+  color:#6b87a8;
+
+}

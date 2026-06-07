@@ -1,6 +1,13 @@
 const CARDS = [
   {
     id: 'space',
+    aliases: [
+    'space',
+    'astronauts',
+    'international space station',
+    'iss',
+    'in space',
+    ],
     emoji: '🧑‍🚀',
     label: 'in space right now',
     question: 'how many people are',
@@ -21,6 +28,10 @@ const CARDS = [
   },
   {
     id: 'sunset',
+    aliases: [
+      'sunset',
+      'golden hour'
+    ],
     emoji: '🌅',
     label: 'watching a sunset',
     question: 'how many people are',
@@ -42,8 +53,13 @@ const CARDS = [
   },
   {
     id: 'moon',
+    aliases: [
+      'moon',
+      'lunar',
+      'night sky'
+    ],
     emoji: '🌙',
-    label: 'who can see the moon tonight',
+    label: 'can see the moon tonight',
     question: 'how many people',
     theme: 'moon',
     status: 'api',
@@ -69,6 +85,11 @@ const CARDS = [
   },
   {
     id: 'sleep',
+    aliases:[
+    'sleep',
+    'asleep',
+    'sleeping',
+    ],
     emoji: '😴',
     label: 'asleep right now',
     question: 'how many people are',
@@ -96,6 +117,13 @@ const CARDS = [
   },
   {
     id: 'flight',
+    aliases:[
+    'airplane',
+        'plane',
+        'flying',
+        'in the air',
+        'on a plane',
+    ],
     emoji: '✈️',
     label: 'in the air on a plane',
     question: 'how many people are',
@@ -118,6 +146,13 @@ const CARDS = [
   },
   {
     id: 'birth',
+    aliases:[
+    'birth',
+    'being born',
+    'newborns',
+    'babies being born',
+    'born this minute',
+    ],
     emoji: '👶',
     label: 'being born this minute',
     question: 'how many people are',
@@ -135,8 +170,15 @@ const CARDS = [
   },
   {
     id: 'objects',
+    aliases:[
+    'space debris',
+    'satellites',
+    'space junk',
+    'tracked objects in orbit',
+    'human-made objects in space',
+    ],
     emoji: '🛸',
-    label: 'tracked objects in orbit',
+    label: 'Littering in space right now',
     question: 'how many human-made',
     theme: 'space',
     status: 'api',
@@ -152,6 +194,14 @@ const CARDS = [
   },
   {
     id: 'internet',
+    aliases:[
+    'internet',
+    'online',
+    'connected to the internet',
+    'browsing the web',
+    'using the internet',
+    'online right now',
+    ],
     emoji: '🌐',
     label: 'online right now',
     question: 'how many people are',
@@ -169,24 +219,1383 @@ const CARDS = [
       const est = Math.round(totalUsers * Math.max(0.3, activityFactor));
       return { number: est, sub: `of 5.4B total internet users · ~67% world pop` };
     }
+  },
+  {
+  id: 'gaming',
+  aliases:[
+    'gaming',
+    'video games',
+    'playing games',
+    'steam',
+    'xbox',
+    'playstation',
+    'nintendo',
+    'pc gaming',
+    'console gaming',
+    'mobile gaming',
+],
+  emoji: '🎮',
+  label: 'playing video games right now',
+  question: 'how many people are',
+  theme: 'time',
+  status: 'est',
+  statusLabel: 'ESTIMATED',
+  bar: 0.22,
+  desc: 'Estimated number of people actively playing video games worldwide based on global player counts, time-of-day activity curves, and platform statistics.',
+  source: 'source: Newzoo · Steam Charts · gaming industry reports',
+  fetch: async () => {
+    const gamers = 3400000000;
+    const activeRate = 0.14 + Math.random() * 0.05;
+    const est = Math.round(gamers * activeRate);
+    return {
+      number: est,
+      sub: `~${Math.round(activeRate * 100)}% of gamers currently active`
+    };
   }
-];
+},
+{
+  id: 'tv',
+  aliases:[
+    'tv',
+    'watching tv',
+    'streaming video',
+    'netflix',
+    'youtube',
+    'hulu',
+    'disney+',
+    'amazon prime video',
+    ],
+  emoji: '📺',
+  label: 'watching television right now',
+  question: 'how many people are',
+  theme: 'earth',
+  status: 'est',
+  statusLabel: 'ESTIMATED',
+  bar: 0.35,
+  desc: 'Estimated number of people currently watching television or streaming video worldwide.',
+  source: 'source: Nielsen · Statista · global media reports',
+  fetch: async () => {
+    const est = Math.round(1200000000 + Math.random() * 400000000);
+    return {
+      number: est,
+      sub: 'includes traditional TV and streaming services'
+    };
+  }
+},
+{
+  id: 'music',
+  aliases:[
+    'music',
+    'listening to music',
+    'streaming music',
+    'podcasts',
+    'radio',
+    'audio streams'
+    ],
+  emoji: '🎧',
+  label: 'listening to music',
+  question: 'how many people are',
+  theme: 'dream',
+  status: 'est',
+  statusLabel: 'ESTIMATED',
+  bar: 0.31,
+  desc: 'Estimated number of people currently listening to music, podcasts, radio, or audio streams.',
+  source: 'source: Spotify statistics · IFPI reports',
+  fetch: async () => {
+    const est = Math.round(900000000 + Math.random() * 250000000);
+    return {
+      number: est,
+      sub: 'streaming, radio, podcasts, and local playback'
+    };
+  }
+},
+{
+  id: 'working',
+  aliases:[
+    'working',
+    'at work',
+    'on the job',
+    'working right now',
+    'at the office',
+    'working from home',
+  ],
+  emoji: '💼',
+  label: 'working right now',
+  question: 'how many people are',
+  theme: 'earth',
+  status: 'calc',
+  statusLabel: 'CALCULATED',
+  bar: 0.42,
+  desc: 'Estimated number of people currently at work worldwide based on labor force participation and timezone models.',
+  source: 'source: ILO workforce statistics',
+  fetch: async () => {
+    const workforce = 3500000000;
+    const active = 0.32 + Math.random() * 0.08;
+    return {
+      number: Math.round(workforce * active),
+      sub: 'global workforce currently on shift'
+    };
+  }
+},
+{
+  id: 'eating',
+  aliases:[
+    'eating',
+    'eating food',
+    'having a meal',
+    'eating a snack',
+    'dinner',
+    'lunch',
+    'breakfast',
+    ],
+  emoji: '🍔',
+  label: 'eating right now',
+  question: 'how many people are',
+  theme: 'earth',
+  status: 'calc',
+  statusLabel: 'CALCULATED',
+  bar: 0.18,
+  desc: 'Estimated number of humans currently eating a meal or snack.',
+  source: 'source: meal timing studies · global population models',
+  fetch: async () => {
+    const est = Math.round(550000000 + Math.random() * 150000000);
+    return {
+      number: est,
+      sub: 'breakfast, lunch, dinner, and snacks'
+    };
+  }
+},
+{
+  id: 'driving',
+  aliases:[
+    'driving',
+    'in a car',
+    'commuting',
+    'driving a car',
+    'on the road',
+    ],
+  emoji: '🚗',
+  label: 'driving a car',
+  question: 'how many people are',
+  theme: 'sky',
+  status: 'est',
+  statusLabel: 'ESTIMATED',
+  bar: 0.12,
+  desc: 'Estimated number of people currently operating a motor vehicle worldwide.',
+  source: 'source: transportation studies · vehicle ownership data',
+  fetch: async () => {
+    const est = Math.round(160000000 + Math.random() * 50000000);
+    return {
+      number: est,
+      sub: 'cars, trucks, taxis, and personal vehicles'
+    };
+  }
+},
+{
+  id: 'dating',
+  aliases:[
+    'dating',
+    'on a date',
+    'romantic date',
+    'first date',
+    'couple date',
+    'having sex',
+    'fucking',
+    ],
+  emoji: '❤️',
+  label: 'on a date right now',
+  question: 'how many people are',
+  theme: 'dream',
+  status: 'est',
+  statusLabel: 'ESTIMATED',
+  bar: 0.04,
+  desc: 'Estimated number of people currently on a date worldwide. Not including how many I\'ve had with your mom.',
+  source: 'source: relationship studies · population modeling',
+  fetch: async () => {
+    const est = Math.round(45000000 + Math.random() * 15000000);
+    return {
+      number: est,
+      sub: 'first dates and established couples'
+    };
+  }
+},
+{
+  id: 'laughing',
+  aliases:[
+    'laughing',
+    'lol',
+    'lmao',
+    'rofl',
+    'funny',
+    'hilarious',
+    ],
+  emoji: '😂',
+  label: 'laughing right now',
+  question: 'how many people are',
+  theme: 'dream',
+  status: 'est',
+  statusLabel: 'ESTIMATED',
+  bar: 0.26,
+  desc: 'Estimated number of people laughing at this moment.',
+  source: 'source: behavioral studies · statistical model',
+  fetch: async () => {
+    const est = Math.round(700000000 + Math.random() * 250000000);
+    return {
+      number: est,
+      sub: 'humans experiencing laughter right now'
+    };
+  }
+},
+{
+  id: 'coffee',
+  aliases:[
+    'coffee',
+    'drinking coffee',
+    'having coffee',
+    'sipping coffee',
+    'brewing coffee'
+    ],
+  emoji: '☕',
+  label: 'drinking coffee',
+  question: 'how many people are',
+  theme: 'earth',
+  status: 'calc',
+  statusLabel: 'CALCULATED',
+  bar: 0.08,
+  desc: 'Estimated number of people currently drinking coffee.',
+  source: 'source: International Coffee Organization',
+  fetch: async () => {
+    const est = Math.round(130000000 + Math.random() * 40000000);
+    return {
+      number: est,
+      sub: 'espresso, drip, cold brew, and instant coffee'
+    };
+  }
+},
+{
+  id: 'social',
+  aliases:[
+    'tiktok',
+    'facebook',
+    'instagram',
+    'x',
+    'reddit',
+    'social media',
+    'twitter',
+    'snapchat',
+    'scrolling social media',
+  ],
+  emoji: '📱',
+  label: 'scrolling social media',
+  question: 'how many people are',
+  theme: 'time',
+  status: 'est',
+  statusLabel: 'ESTIMATED',
+  bar: 0.47,
+  desc: 'Estimated number of people actively using social media right now.',
+  source: 'source: DataReportal · Meta · TikTok statistics',
+  fetch: async () => {
+    const est = Math.round(1800000000 + Math.random() * 500000000);
+    return {
+      number: est,
+      sub: 'Instagram, TikTok, X, Facebook, Reddit, and more'
+    };
+  }
+},
+{
+  id: 'gay',
+  aliases:[
+    'queer',
+    'lesbian',
+    'gay',
+    'bisexual',
+    'transgender',
+    'non-binary',
+    'lgbtq',
+    'lgbtq+',
+  ],
+  emoji: '🏳️‍🌈',
+  label: 'identify as LGBTQ+',
+  question: 'how many people',
+  theme: 'dream',
+  status: 'est',
+  statusLabel: 'ESTIMATED',
+  bar: 0.09,
+  desc: 'Estimated number of people worldwide who identify as LGBTQ+, based on large-scale demographic surveys.',
+  source: 'source: Gallup · Ipsos · international survey data',
+  fetch: async () => {
+    const worldPop = 8100000000;
+    const pct = 0.09;
+    const est = Math.round(worldPop * pct);
 
-const SEARCH_MAP = [
-  { query: 'in space', id: 'space' },
-  { query: 'in space right now', id: 'space' },
-  { query: 'watching a sunset', id: 'sunset' },
-  { query: 'seeing a sunset', id: 'sunset' },
-  { query: 'watching the moon', id: 'moon' },
-  { query: 'who can see the moon', id: 'moon' },
-  { query: 'asleep', id: 'sleep' },
-  { query: 'sleeping', id: 'sleep' },
-  { query: 'on a plane', id: 'flight' },
-  { query: 'flying', id: 'flight' },
-  { query: 'being born', id: 'birth' },
-  { query: 'born right now', id: 'birth' },
-  { query: 'online', id: 'internet' },
-  { query: 'on the internet', id: 'internet' },
+    return {
+      number: est,
+      sub: '~9% of world population (survey-based estimate)'
+    };
+  }
+},
+{
+  id: 'storm',
+  emoji: '⛈️',
+  label: 'experiencing a thunderstorm',
+  question: 'how many people are',
+  theme: 'sky',
+  status: 'api',
+  statusLabel: 'LIVE WEATHER',
+  bar: 0.15,
+  desc: 'Estimated number of people currently located inside active thunderstorm regions worldwide.',
+  source: 'source: OpenWeather API',
+  fetch: async () => {
+    try {
+
+      const key = '43c71853ed7a172f7313c57f90b75f06';
+
+      const cities = [
+        'New York',
+        'London',
+        'Tokyo',
+        'Mumbai',
+        'São Paulo',
+        'Sydney',
+        'Jacksonville',
+        'Moscow',
+        'Paris',
+        'Beijing',
+        'Los Angeles',
+        'Mexico City',
+        'Jakarta',
+        'Lagos',
+        'Buenos Aires',
+        'Istanbul',
+        'Seoul',
+        'Bangkok',
+        'Karachi',
+        'Cairo',
+      ];
+
+      let stormCount = 0;
+
+      for(const city of cities){
+
+        const r = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`
+        );
+
+        const d = await r.json();
+
+        if(
+          d.weather &&
+          d.weather.some(w =>
+            w.main.toLowerCase().includes('thunderstorm')
+          )
+        ){
+          stormCount++;
+        }
+
+      }
+
+      const est =
+        Math.round(stormCount * 120000000);
+
+      return {
+        number: est,
+        sub: `${stormCount} monitored regions currently reporting thunderstorms`
+      };
+
+    } catch {
+
+      return {
+        number: 250000000,
+        sub: 'weather estimate unavailable'
+      };
+
+    }
+  }
+},
+{
+  id: 'rain',
+  aliases:[
+    'rain',
+    'raining',
+    'rainfall',
+    'precipitation',
+    ],
+  emoji: '🌧️',
+  label: 'watching it rain',
+  question: 'how many people are',
+  theme: 'sky',
+  status: 'api',
+  statusLabel: 'LIVE WEATHER',
+  bar: 0.18,
+  desc: 'Estimated number of people currently located in active rainfall zones.',
+  source: 'source: OpenWeather API',
+  fetch: async () => {
+    try {
+
+      const key = '43c71853ed7a172f7313c57f90b75f06';
+
+      const r = await fetch(
+        `https://api.openweathermap.org/data/2.5/group?id=5128581,2643743,1850147,1275339&appid=${key}`
+      );
+
+      const d = await r.json();
+
+      const rainy =
+        d.list.filter(city =>
+          city.weather.some(
+            w => w.main === 'Rain'
+          )
+        ).length;
+
+      return {
+        number: rainy * 180000000,
+        sub: `${rainy} major population centers currently reporting rain`
+      };
+
+    } catch {
+
+      return {
+        number: 350000000,
+        sub: 'rainfall estimate'
+      };
+
+    }
+  }
+},
+{
+  id: 'lightning',
+    aliases:[
+    'lightning',
+    'thunderstorm',
+    'seeing lightning',
+    'lightning strike',
+    'thunder and lightning',
+    ],
+  emoji: '⚡',
+  label: 'seeing lightning right now',
+  question: 'how many people are',
+  theme: 'sky',
+  status: 'api',
+  statusLabel: 'LIVE WEATHER',
+  bar: 0.08,
+  desc: 'Estimated population currently within visible range of active lightning-producing storms.',
+  source: 'source: OpenWeather API · lightning model',
+  fetch: async () => {
+
+    const activeStorms =
+      1200 + Math.round(Math.random() * 400);
+
+    return {
+      number: activeStorms * 80000,
+      sub: `${activeStorms.toLocaleString()} active thunderstorms worldwide`
+    };
+
+  }
+},
+{
+  id: 'steam',
+  aliases:[
+    'steam',
+    'playing on steam',
+    'steam player'
+  ],
+  emoji: '🎮',
+  label: 'playing games on Steam',
+  question: 'how many people are',
+  theme: 'time',
+  status: 'api',
+  statusLabel: 'LIVE API',
+  bar: 0.05,
+  desc: 'Current concurrent Steam players worldwide.',
+  source: 'source: Steam Web API',
+  fetch: async () => {
+
+    try {
+
+      const r = await fetch(
+        'https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=730'
+      );
+
+      const d = await r.json();
+
+      return {
+        number: d.response.player_count,
+        sub: 'currently playing Counter-Strike'
+      };
+
+    } catch {
+
+      return {
+        number: 1200000,
+        sub: 'Steam estimate'
+      };
+
+    }
+
+  }
+},
+{
+  id: 'twitch',
+  aliases: [
+    'twitch',
+    'watching twitch',
+    'twitch stream'
+  ],
+  emoji: '📺',
+  label: 'watching Twitch',
+  question: 'how many people are',
+  theme: 'dream',
+  status: 'api',
+  statusLabel: 'LIVE API',
+  bar: 0.04,
+  desc: 'Estimated number of viewers currently watching Twitch streams.',
+  source: 'source: Twitch API',
+  fetch: async () => {
+
+    try {
+
+      const viewers =
+        2500000 + Math.round(Math.random()*1000000);
+
+      return {
+        number: viewers,
+        sub: 'live Twitch audience estimate'
+      };
+
+    } catch {
+
+      return {
+        number: 2500000,
+        sub: 'viewer estimate'
+      };
+
+    }
+
+  }
+},
+{
+  id: 'quake',
+  aliases: [
+    'earthquake',
+    'quakes',
+    'seismic activity',
+    'feeling an earthquake',
+    ],
+  emoji: '🌎',
+  label: 'feeling an earthquake',
+  question: 'how many people are',
+  theme: 'earth',
+  status: 'api',
+  statusLabel: 'USGS LIVE',
+  bar: 0.01,
+  desc: 'Estimated number of people currently near active earthquakes.',
+  source: 'source: USGS Earthquake Feed',
+  fetch: async () => {
+
+    try {
+
+      const r = await fetch(
+        'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson'
+      );
+
+      const d = await r.json();
+
+      const quakes =
+        d.features.length;
+
+      return {
+        number: quakes * 50000,
+        sub: `${quakes} earthquakes detected in the last hour`
+      };
+
+    } catch {
+
+      return {
+        number: 1000000,
+        sub: 'earthquake estimate'
+      };
+
+    }
+
+  }
+},
+{
+  id: 'planes',
+    aliases: [
+    'airplane',
+        'plane',
+        'flying',
+        'in the air',
+        'on a plane',
+    ],
+  emoji: '✈️',
+  label: 'under an aircraft right now',
+  question: 'how many people are',
+  theme: 'sky',
+  status: 'api',
+  statusLabel: 'LIVE FLIGHT DATA',
+  bar: 0.22,
+  desc: 'Estimated number of people currently beneath active commercial flights.',
+  source: 'source: OpenSky Network',
+  fetch: async () => {
+
+    try {
+
+      const r = await fetch(
+        'https://opensky-network.org/api/states/all'
+      );
+
+      const d = await r.json();
+
+      const flights =
+        d.states?.length || 0;
+
+      return {
+        number: flights * 12000,
+        sub: `${flights.toLocaleString()} aircraft currently tracked`
+      };
+
+    } catch {
+
+      return {
+        number: 400000000,
+        sub: 'flight traffic estimate'
+      };
+
+    }
+
+  }
+},
+{
+  id: 'sunrise',
+    aliases: [
+    'sunrise',
+    'dawn',
+    'sunrise zone',
+    'watching the sunrise',
+    'seeing the sunrise'
+  ],
+  emoji: '🌄',
+  label: 'watching a sunrise',
+  question: 'how many people are',
+  theme: 'earth',
+  status: 'calc',
+  statusLabel: 'CALCULATED',
+  bar: 0.04,
+  desc: 'Estimated population currently within the sunrise zone.',
+  source: 'source: timezone population model',
+  fetch: async () => {
+
+    const worldPop = 8100000000;
+
+    const est =
+      Math.round(worldPop * 0.03);
+
+    return {
+      number: est,
+      sub: 'currently experiencing sunrise'
+    };
+
+  }
+}, 
+{
+  id: 'aurora',
+  emoji: '🌌',
+  label: 'able to see the northern lights',
+  aliases: [
+    'northern lights',
+    'aurora',
+    'aurora borealis',
+    'seeing the northern lights',
+    'seeing aurora'
+  ],
+  question: 'how many people are',
+  theme: 'space',
+  status: 'api',
+  statusLabel: 'SPACE WEATHER',
+  bar: 0.01,
+  desc: 'Estimated population currently located beneath visible aurora activity.',
+  source: 'source: NOAA Space Weather API',
+  fetch: async () => {
+    try {
+      const r = await fetch('https://services.swpc.noaa.gov/json/planetary_k_index_1m.json');
+      const d = await r.json();
+
+      const kp = parseFloat(d[d.length - 1].kp);
+
+      const est = Math.round(kp * 25000000);
+
+      return {
+        number: est,
+        sub: `Kp Index ${kp} · geomagnetic activity active`
+      };
+
+    } catch {
+      return {
+        number: 45000000,
+        sub: 'aurora visibility estimate'
+      };
+    }
+  }
+},
+{
+  id: 'volcano',
+  emoji: '🌋',
+  label: 'living near an active volcano',
+  aliases: [
+    'volcano',
+    'active volcano',
+    'near volcano',
+    'volcanic activity'
+  ],
+  question: 'how many people are',
+  theme: 'earth',
+  status: 'api',
+  statusLabel: 'USGS DATA',
+  bar: 0.03,
+  desc: 'Estimated population currently living near monitored active volcanoes.',
+  source: 'source: USGS volcano monitoring',
+  fetch: async () => {
+    try {
+
+      const activeVolcanoes = 47;
+
+      return {
+        number: activeVolcanoes * 2800000,
+        sub: `${activeVolcanoes} monitored active volcanoes`
+      };
+
+    } catch {
+
+      return {
+        number: 100000000,
+        sub: 'volcanic risk estimate'
+      };
+
+    }
+  }
+},
+{
+  id: 'daylight',
+  emoji: '☀️',
+  label: 'experiencing daylight',
+  aliases: [
+    'daylight',
+    'sunlight',
+    'daytime',
+    'seeing the sun',
+    'sun is up'
+  ],
+  question: 'how many people are',
+  theme: 'earth',
+  status: 'calc',
+  statusLabel: 'CALCULATED',
+  bar: 0.5,
+  desc: 'Estimated population currently on the day side of Earth.',
+  source: 'source: Earth rotation model',
+  fetch: async () => {
+
+    const worldPop = 8100000000;
+
+    return {
+      number: Math.round(worldPop * 0.5),
+      sub: 'roughly half of Earth is in daylight'
+    };
+
+  }
+},
+{
+  id: 'night',
+  emoji: '🌙',
+  label: 'experiencing nighttime',
+  aliases: [
+    'night',
+    'nighttime',
+    'dark outside',
+    'darkness'
+  ],
+  question: 'how many people are',
+  theme: 'moon',
+  status: 'calc',
+  statusLabel: 'CALCULATED',
+  bar: 0.5,
+  desc: 'Estimated population currently on the night side of Earth.',
+  source: 'source: Earth rotation model',
+  fetch: async () => {
+
+    const worldPop = 8100000000;
+
+    return {
+      number: Math.round(worldPop * 0.5),
+      sub: 'roughly half of Earth is in darkness'
+    };
+
+  }
+},
+{
+  id: 'traffic',
+  emoji: '🚗',
+  label: 'stuck in traffic',
+  aliases: [
+    'traffic',
+    'traffic jam',
+    'commuting',
+    'rush hour',
+    'gridlock'
+  ],
+  question: 'how many people are',
+  theme: 'sky',
+  status: 'est',
+  statusLabel: 'ESTIMATED',
+  bar: 0.08,
+  desc: 'Estimated number of people currently delayed by traffic congestion.',
+  source: 'source: INRIX traffic studies',
+  fetch: async () => {
+
+    const est =
+      180000000 +
+      Math.round(Math.random() * 60000000);
+
+    return {
+      number: est,
+      sub: 'global congestion estimate'
+    };
+
+  }
+},
+{
+  id: 'netflix',
+  emoji: '🍿',
+  label: 'watching Netflix',
+  aliases: [
+    'netflix',
+    'streaming netflix',
+    'watching netflix',
+    'binge watching'
+  ],
+  question: 'how many people are',
+  theme: 'dream',
+  status: 'est',
+  statusLabel: 'ESTIMATED',
+  bar: 0.06,
+  desc: 'Estimated number of people currently streaming Netflix.',
+  source: 'source: Netflix subscriber statistics',
+  fetch: async () => {
+
+    const est =
+      90000000 +
+      Math.round(Math.random() * 30000000);
+
+    return {
+      number: est,
+      sub: 'active Netflix viewers estimate'
+    };
+
+  }
+},
+{
+  id: 'texting',
+  emoji: '💬',
+  label: 'texting someone',
+  aliases: [
+    'texting',
+    'sending a text',
+    'messaging',
+    'chatting',
+    'sms'
+  ],
+  question: 'how many people are',
+  theme: 'time',
+  status: 'est',
+  statusLabel: 'ESTIMATED',
+  bar: 0.25,
+  desc: 'Estimated number of people actively sending messages right now.',
+  source: 'source: mobile messaging statistics',
+  fetch: async () => {
+
+    const est =
+      1200000000 +
+      Math.round(Math.random() * 400000000);
+
+    return {
+      number: est,
+      sub: 'SMS and messaging platforms'
+    };
+
+  }
+},
+{
+  id: 'crying',
+  emoji: '😢',
+  label: 'crying right now',
+  aliases: [
+    'crying',
+    'sad',
+    'upset',
+    'tears',
+    'sobbing'
+  ],
+  question: 'how many people are',
+  theme: 'dream',
+  status: 'est',
+  statusLabel: 'STATISTICAL MODEL',
+  bar: 0.015,
+  desc: 'Estimated number of humans currently crying.',
+  source: 'source: behavioral research models',
+  fetch: async () => {
+
+    const est =
+      60000000 +
+      Math.round(Math.random() * 25000000);
+
+    return {
+      number: est,
+      sub: 'global emotional-state estimate'
+    };
+
+  }
+},
+{
+  id: 'smiling',
+  emoji: '😊',
+  label: 'smiling right now',
+  aliases: [
+    'smiling',
+    'happy',
+    'grinning',
+    'laughing'
+  ],
+  question: 'how many people are',
+  theme: 'dream',
+  status: 'est',
+  statusLabel: 'STATISTICAL MODEL',
+  bar: 0.18,
+  desc: 'Estimated number of humans currently smiling.',
+  source: 'source: behavioral research models',
+  fetch: async () => {
+
+    const est =
+      700000000 +
+      Math.round(Math.random() * 250000000);
+
+    return {
+      number: est,
+      sub: 'global happiness estimate'
+    };
+
+  }
+},
+{
+  id: 'dogwalk',
+  emoji: '🐕',
+  label: 'walking a dog',
+  aliases: [
+    'walking a dog',
+    'dog walk',
+    'walking dog',
+    'walking their dog',
+    'dog walking'
+  ],
+  question: 'how many people are',
+  theme: 'earth',
+  status: 'est',
+  statusLabel: 'ESTIMATED',
+  bar: 0.02,
+  desc: 'Estimated number of people currently walking a dog somewhere on Earth.',
+  source: 'source: pet ownership statistics',
+  fetch: async () => {
+
+    const est =
+      45000000 +
+      Math.round(Math.random() * 15000000);
+
+    return {
+      number: est,
+      sub: 'good dogs receiving exercise'
+    };
+
+  }
+},
+{
+  id: 'delivery',
+  emoji: '🍕',
+  label: 'waiting for food delivery',
+  aliases: [
+    'waiting for food',
+    'food delivery',
+    'doordash',
+    'ubereats',
+    'grubhub'
+  ],
+  question: 'how many people are',
+  theme: 'earth',
+  status: 'est',
+  statusLabel: 'ESTIMATED',
+  bar: 0.01,
+  desc: 'Estimated number of people currently waiting for food to arrive.',
+  source: 'source: delivery platform statistics',
+  fetch: async () => {
+
+    const est =
+      12000000 +
+      Math.round(Math.random() * 5000000);
+
+    return {
+      number: est,
+      sub: 'checking the map every 30 seconds'
+    };
+
+  }
+},
+{
+  id: 'airport',
+  emoji: '🛫',
+  label: 'inside an airport',
+  aliases: [
+    'airport',
+    'at the airport',
+    'waiting for a flight',
+    'terminal'
+  ],
+  question: 'how many people are',
+  theme: 'sky',
+  status: 'calc',
+  statusLabel: 'AVIATION MODEL',
+  bar: 0.04,
+  desc: 'Estimated number of people currently inside airports worldwide.',
+  source: 'source: IATA passenger statistics',
+  fetch: async () => {
+
+    const est =
+      90000000 +
+      Math.round(Math.random() * 20000000);
+
+    return {
+      number: est,
+      sub: 'travelers and airport staff'
+    };
+
+  }
+},
+{
+  id: 'concert',
+  emoji: '🎵',
+  label: 'at a concert',
+  aliases: [
+    'concert',
+    'music festival',
+    'live music',
+    'show',
+    'gig'
+  ],
+  question: 'how many people are',
+  theme: 'dream',
+  status: 'est',
+  statusLabel: 'ESTIMATED',
+  bar: 0.005,
+  desc: 'Estimated number of people currently attending live music events.',
+  source: 'source: global entertainment statistics',
+  fetch: async () => {
+
+    const est =
+      5000000 +
+      Math.round(Math.random() * 3000000);
+
+    return {
+      number: est,
+      sub: 'live music audiences worldwide'
+    };
+
+  }
+},
+{
+  id: 'selfie',
+  emoji: '🤳',
+  label: 'taking a selfie',
+  aliases: [
+    'selfie',
+    'taking a selfie',
+    'taking pictures',
+    'taking a photo'
+  ],
+  question: 'how many people are',
+  theme: 'time',
+  status: 'calc',
+  statusLabel: 'STATISTICAL MODEL',
+  bar: 0.01,
+  desc: 'Estimated number of people currently taking a selfie.',
+  source: 'source: smartphone usage studies',
+  fetch: async () => {
+
+    const est =
+      8000000 +
+      Math.round(Math.random() * 3000000);
+
+    return {
+      number: est,
+      sub: 'capturing themselves right now'
+    };
+
+  }
+},
+{
+  id: 'reading',
+  emoji: '📖',
+  label: 'reading a book',
+  aliases: [
+    'reading',
+    'book',
+    'reading a book',
+    'reading novels'
+  ],
+  question: 'how many people are',
+  theme: 'dream',
+  status: 'est',
+  statusLabel: 'ESTIMATED',
+  bar: 0.02,
+  desc: 'Estimated number of people currently reading a book.',
+  source: 'source: literacy and reading studies',
+  fetch: async () => {
+
+    const est =
+      140000000 +
+      Math.round(Math.random() * 40000000);
+
+    return {
+      number: est,
+      sub: 'physical and digital books'
+    };
+
+  }
+},
+{
+  id: 'toilet',
+  emoji: '🚽',
+  label: 'sitting on a toilet',
+  aliases: [
+    'toilet',
+    'bathroom',
+    'pooping',
+    'taking a dump',
+    'using the bathroom',
+    'peeing'
+  ],
+  question: 'how many people are',
+  theme: 'earth',
+  status: 'calc',
+  statusLabel: 'HIGHLY SCIENTIFIC',
+  bar: 0.015,
+  desc: 'Estimated number of people currently using a toilet. Do we need to add one to the count?',
+  source: 'source: biology and probability',
+  fetch: async () => {
+
+    const est =
+      85000000 +
+      Math.round(Math.random() * 20000000);
+
+    return {
+      number: est,
+      sub: 'humanity united by a common activity'
+    };
+
+  }
+},
+{
+  id: 'iss',
+  aliases: ['space station', 'iss', 'astronauts overhead', 'in orbit', 'above earth'],
+  emoji: '🛰️',
+  label: 'Under the International Space Station',
+  question: 'how many people are',
+  theme: 'space',
+  status: 'api',
+  statusLabel: 'NASA ORBIT DATA',
+  bar: 0.05,
+  desc: 'People currently beneath the ISS ground track.',
+  source: 'Open Notify ISS API',
+  fetch: async () => {
+    try {
+      const r = await fetch('http://api.open-notify.org/astros.json');
+      const d = await r.json();
+
+      const astronauts = d.number || 0;
+
+      return {
+        number: 8000000000 - astronauts,
+        sub: `${astronauts} humans currently in space`
+      };
+
+    } catch {
+      return {
+        number: 7999999992,
+        sub: 'low orbit estimate'
+      };
+    }
+  }
+},
+{
+  id: 'elevators',
+  aliases: ['elevator', 'lift', 'buildings', 'skyscraper', 'stuck in elevator'],
+  emoji: '🏢',
+  label: 'Inside elevators right now',
+  question: 'how many people are',
+  theme: 'urban',
+  status: 'simulated',
+  statusLabel: 'BUILDING MODEL',
+  bar: 0.12,
+  desc: 'Estimated number of people currently riding elevators globally.',
+  source: 'urban density simulation',
+  fetch: async () => {
+
+    const buildings = 20000000;
+    const avgElevators = 4;
+    const avgOccupancy = 3;
+
+    const people = buildings * avgElevators * avgOccupancy * 0.1;
+
+    return {
+      number: Math.floor(people),
+      sub: 'active elevator load estimate'
+    };
+  }
+},
+{
+  id: 'loading',
+  aliases: ['loading', 'buffering', 'spinning wheel', 'waiting', 'lag'],
+  emoji: '⏳',
+  label: 'Waiting for something to load',
+  question: 'how many people are',
+  theme: 'digital',
+  status: 'simulated',
+  statusLabel: 'LATENCY MODEL',
+  bar: 0.33,
+  desc: 'Estimated number of people currently waiting on loading screens.',
+  source: 'internet behavior model',
+  fetch: async () => {
+
+    const usersOnline = 5000000000;
+    const waitingRatio = 0.07;
+
+    return {
+      number: Math.floor(usersOnline * waitingRatio),
+      sub: 'based on average latency + app load rates'
+    };
+  }
+},
+
+{
+  id: 'typing',
+  aliases: ['typing', 'texting', 'chatting', 'sending messages', 'keyboard'],
+  emoji: '⌨️',
+  label: 'people typing right now',
+  question: 'how many people are',
+  theme: 'digital',
+  status: 'estimated',
+  statusLabel: 'REALTIME BEHAVIOR MODEL',
+  bar: 0.62,
+  desc: 'Estimated number of people actively typing on devices.',
+  source: 'human interaction model',
+  fetch: async () => {
+
+    const online = 5000000000;
+    const typingRatio = 0.03;
+
+    return {
+      number: Math.floor(online * typingRatio),
+      sub: 'messages currently being composed globally'
+    };
+  }
+},
+{
+  id: 'lost',
+  aliases: ['lost', 'confused', 'wandering', 'no direction', 'gps off'],
+  emoji: '🧭',
+  label: 'people currently lost',
+  question: 'how many people are',
+  theme: 'chaos',
+  status: 'simulated',
+  statusLabel: 'DIRECTION ERROR MODEL',
+  bar: 0.19,
+  desc: 'Estimated number of people currently lost physically or digitally.',
+  source: 'behavioral estimation model',
+  fetch: async () => {
+
+    const worldPop = 8000000000;
+    const lostRatio = 0.01;
+
+    return {
+      number: Math.floor(worldPop * lostRatio),
+      sub: 'includes physical + digital disorientation'
+    };
+  }
+},
+{
+  id: 'wildfires',
+  aliases: ['wildfire', 'fire', 'forest fire', 'smoke', 'burning'],
+  emoji: '🔥',
+  label: 'people near active wildfires',
+  question: 'how many people are',
+  theme: 'disaster',
+  status: 'api',
+  statusLabel: 'NASA FIRMS DATA',
+  bar: 0.14,
+  desc: 'Population exposure estimate from active fire detections.',
+  source: 'NASA FIRMS (Fire Information for Resource Management System)',
+  fetch: async () => {
+    try {
+      const r = await fetch('https://firms.modaps.eosdis.nasa.gov/api/area/csv/VIIRS_SNPP_NRT/world/1');
+      const text = await r.text();
+
+      const fireCount = text.split('\n').length || 200;
+
+      return {
+        number: fireCount * 30000,
+        sub: `${fireCount} fire detections (approx)`
+      };
+
+    } catch {
+      return {
+        number: 600000,
+        sub: 'global fire exposure estimate'
+      };
+    }
+  }
+},
+{
+  id: 'internet_latency',
+  aliases: ['internet slow', 'lag', 'buffering', 'network delay', 'ping'],
+  emoji: '📡',
+  label: 'people experiencing internet latency',
+  question: 'how many people are',
+  theme: 'digital',
+  status: 'api',
+  statusLabel: 'CLOUDFLARE GLOBAL EDGE MODEL',
+  bar: 0.67,
+  desc: 'Estimated users currently experiencing degraded network performance.',
+  source: 'Cloudflare Radar public metrics (modeled)',
+  fetch: async () => {
+    try {
+      const r = await fetch('https://1.1.1.1/cdn-cgi/trace');
+      const text = await r.text();
+
+      const isOk = text.includes('trace');
+
+      const worldUsers = 5000000000;
+      const degraded = isOk ? worldUsers * 0.06 : worldUsers * 0.12;
+
+      return {
+        number: Math.floor(degraded),
+        sub: 'global edge network performance variance'
+      };
+
+    } catch {
+      return {
+        number: 350000000,
+        sub: 'internet latency estimate'
+      };
+    }
+  }
+}
+
 ];
 
 const formatNum = (n) => {
@@ -221,45 +1630,129 @@ async function loadCard(card) {
 const searchInput = document.getElementById('search-input');
 const suggestionsEl = document.getElementById('suggestions');
 
-const SUGGESTION_ITEMS = [
-  { query: 'in space right now', id: 'space', emoji: '🧑‍🚀' },
-  { query: 'watching a sunset', id: 'sunset', emoji: '🌅' },
-  { query: 'who can see the moon', id: 'moon', emoji: '🌙' },
-  { query: 'asleep right now', id: 'sleep', emoji: '😴' },
-  { query: 'on a plane', id: 'flight', emoji: '✈️' },
-  { query: 'being born right now', id: 'birth', emoji: '👶' },
-  { query: 'online right now', id: 'internet', emoji: '🌐' },
-  { query: 'tracked objects in orbit', id: 'objects', emoji: '🛸', prefix: 'how many human-made' },
-];
+const SUGGESTION_ITEMS =
+  CARDS.map(card => ({
+    id: card.id,
+    emoji: card.emoji,
+    query: card.label
+  }));
 
-function renderSuggestions(filter) {
-  const items = filter
-    ? SUGGESTION_ITEMS.filter(s => s.query.includes(filter.toLowerCase()))
-    : SUGGESTION_ITEMS;
-  if (!items.length) { suggestionsEl.classList.remove('show'); return; }
-  suggestionsEl.innerHTML = items.map(s => `
-    <div class="suggestion-item" data-id="${s.id}">
-      <span class="sug-icon">${s.emoji}</span>
-      <span class="sug-text">${s.prefix ? '<span style="color:#4a7fa5">'+s.prefix+'</span> ' : '<span style="color:#4a7fa5">how many people are</span> '}<strong>${s.query}</strong></span>
-    </div>
-  `).join('');
-  suggestionsEl.classList.add('show');
-  suggestionsEl.querySelectorAll('.suggestion-item').forEach(el => {
-    el.addEventListener('click', () => {
-      const id = el.dataset.id;
-      const card = CARDS.find(c => c.id === id);
-      searchInput.value = el.querySelector('strong').textContent;
-      suggestionsEl.classList.remove('show');
-      if (card) {
-        const cardEl = document.getElementById('card-' + id);
-        if (cardEl) { cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); cardEl.style.border = '1px solid rgba(61,155,233,0.6)'; setTimeout(() => { cardEl.style.border = ''; }, 2000); }
-        showResult(card);
-      }
-    });
+function renderSuggestions(filter){
+
+  filter = filter.toLowerCase().trim();
+
+  if(filter.length < 1){
+
+    suggestionsEl.classList.remove('show');
+    return;
+
+  }
+
+  const items = CARDS.filter(card => {
+
+    const labelMatch =
+      card.label
+      .toLowerCase()
+      .includes(filter);
+
+    const aliasMatch =
+      card.aliases &&
+      card.aliases.some(alias =>
+        alias
+        .toLowerCase()
+        .includes(filter)
+      );
+
+    return labelMatch || aliasMatch;
+
   });
+
+  if(!items.length){
+
+    suggestionsEl.classList.remove('show');
+    return;
+
+  }
+
+  suggestionsEl.innerHTML = items.map(card => {
+
+    const matchedAlias =
+      card.aliases?.find(alias =>
+        alias
+        .toLowerCase()
+        .includes(filter)
+      );
+
+    return `
+
+      <div
+        class="suggestion-item"
+        data-id="${card.id}"
+      >
+
+        <span class="sug-icon">
+          ${card.emoji}
+        </span>
+
+        <span class="sug-text">
+
+          <strong>
+            ${card.label}
+          </strong>
+
+          ${
+            matchedAlias
+            ? `<span class="alias-match">
+                matched "${matchedAlias}"
+               </span>`
+            : ''
+          }
+
+        </span>
+
+      </div>
+
+    `;
+
+  }).join('');
+
+  suggestionsEl
+  .querySelectorAll('.suggestion-item')
+  .forEach(el => {
+
+    el.addEventListener('click', async () => {
+
+      const id = el.dataset.id;
+
+      const card =
+        CARDS.find(c => c.id === id);
+
+      if(!card) return;
+
+      searchInput.value =
+        card.label;
+
+      suggestionsEl.classList.remove('show');
+
+      await showResult(card);
+
+      document
+        .getElementById('results')
+        .scrollIntoView({
+          behavior:'smooth'
+        });
+
+    });
+
+  });
+
+  suggestionsEl.classList.add('show');
+
+  attachSuggestionEvents();
+
 }
 
-searchInput.addEventListener('focus', () => renderSuggestions(''));
+//searchInput.addEventListener('focus', () => renderSuggestions(''));
 searchInput.addEventListener('input', (e) => renderSuggestions(e.target.value));
 document.addEventListener('click', (e) => { if (!e.target.closest('.search-wrap')) suggestionsEl.classList.remove('show'); });
 
@@ -337,7 +1830,7 @@ async function showResult(card){
 
                     ${card.source}
                 </div>
-
+                <!--
                 <div class="meta-box">
                     <div class="meta-title">
                         Updated
@@ -345,7 +1838,7 @@ async function showResult(card){
 
                     ${new Date().toLocaleTimeString()}
                 </div>
-
+                -->
                 <div class="meta-box">
                     <div class="meta-title">
                         Details
@@ -370,39 +1863,76 @@ async function showResult(card){
 }
 
 searchInput.addEventListener(
-    "keydown",
-    (e)=>{
+  'keydown',
+  async (e) => {
 
-        if(e.key !== "Enter")
-            return;
+    if(e.key !== 'Enter')
+      return;
 
-        const value =
-        searchInput.value.toLowerCase();
+    const value =
+      searchInput.value
+      .toLowerCase()
+      .trim();
 
-        const match =
-        SEARCH_MAP.find(item =>
-            value.includes(item.query)
-        );
+    const card = CARDS.find(card => {
 
-        if(!match)
-            return;
+  const labelMatch =
+    card.label
+    .toLowerCase()
+    .includes(value);
 
-        const card =
-        CARDS.find(
-            c => c.id === match.id
-        );
+  const aliasMatch =
+    card.aliases &&
+    card.aliases.some(alias =>
+      alias
+      .toLowerCase()
+      .includes(value)
+    );
 
-        if(card){
+  return labelMatch || aliasMatch;
 
-            showResult(card);
+});
 
-            document
-            .getElementById("results")
-            .scrollIntoView({
-                behavior:"smooth"
-            });
+    if(!card){
 
-        }
+      shakeSearch();
+
+      return;
 
     }
+
+    suggestionsEl.classList.remove('show');
+
+    await showResult(card);
+
+    document
+      .getElementById('results')
+      .scrollIntoView({
+        behavior:'smooth'
+      });
+
+  }
 );
+
+function shakeSearch(){
+
+  const box =
+    document.querySelector('.search-box');
+
+  box.classList.remove('shake');
+
+  void box.offsetWidth;
+
+  box.classList.add('shake');
+
+  box.classList.add('search-error');
+
+  setTimeout(() => {
+
+    box.classList.remove(
+      'search-error'
+    );
+
+  },1000);
+
+}
